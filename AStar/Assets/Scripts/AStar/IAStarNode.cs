@@ -6,24 +6,30 @@ namespace Pathing
 	// You will need to have the navigation targets in your world inherit from this interface for the algorithm to work
 	public interface IAStarNode
 	{
-		// The neighbours property returns an enumeration of all the nodes adjacent to this node
+		/// <summary>
+		/// The neighbours property returns an enumeration of all the nodes adjacent to this node
+		/// </summary>
 		IEnumerable<IAStarNode> Neighbours
 		{
 			get;
 		}
-
-		// This function should calculate the exact cost of travelling from this node to "neighbour".
-		// when the A* algorithm calls this function, the neighbour parameter is guaranteed to be one of the nodes in 'Neighbours'.
-		// 'cost' could be distance, time, anything countable, where smaller is considered better by the algorithm
+		
+		/// <summary>
+		/// This function should calculate the exact cost of travelling from this node to "neighbour".
+		/// when the A* algorithm calls this function, the neighbour parameter is guaranteed to be one of the nodes in 'Neighbours'.
+		/// 'cost' could be distance, time, anything countable, where smaller is considered better by the algorithm
+		/// </summary>
 		float CostTo(IAStarNode neighbour);
 
-		// This function should estimate the distance to travel from this node to "goal". goal may be
-		// any node in the graph, so there is no guarantee it is a direct neighbour. The better the estimation
-		// the faster the AStar algorithm will find the optimal route. Be careful however, that the cost of calculating
-		// this estimate doesn't outweigh any benefits for the AStar search.
-		//
-		// this estimation could be distance, time, anything countable, where smaller is considered better by the algorithm
-		// the estimate needs to 'consistent' (also know as 'monotone')
+		/// <summary>
+		/// This function should estimate the distance to travel from this node to "goal". goal may be
+		/// any node in the graph, so there is no guarantee it is a direct neighbour. The better the estimation
+		/// the faster the AStar algorithm will find the optimal route. Be careful however, that the cost of calculating
+		/// this estimate doesn't outweigh any benefits for the AStar search.
+		///
+		/// this estimation could be distance, time, anything countable, where smaller is considered better by the algorithm
+		/// the estimate needs to 'consistent' (also know as 'monotone')
+		/// </summary>
 		float EstimatedCostTo(IAStarNode goal);
 	}
 }

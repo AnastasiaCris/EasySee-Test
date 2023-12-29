@@ -61,8 +61,7 @@ namespace Pathing
 			fScore.Add(start, hScore[start]);
 
 			OpenSorter sorter = new OpenSorter(fScore);
-			IAStarNode current,
-						from = null;
+			IAStarNode current, from = null;
 			float tentativeGScore;
 			bool tentativeIsBetter;
 
